@@ -1,3 +1,4 @@
+ref : https://codepen.io/pavitpim/pen/NWyBdPy?editors=1100
 # Basic Grid 
 
 
@@ -104,3 +105,125 @@ grid-template-columns: repeat(2,150px) 1fr;
 ```
 
 ![image](images/6.png)
+
+Note : หน่วย fr ใช้ได้ทั้ง row และ column
+
+# POSITIONING
+
+- css rule ต่อไปนี้อ้างอิงจากตัวเลขที่ชื่อว่า `grid line`
+
+
+```css
+.item--1 {
+  background-color: orangered;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+```
+
+shorthand
+```css
+.item--1 {
+  background-color: orangered;
+  grid-row:2/3;
+  grid-column:2/3;
+}
+
+```
+
+![image](images/7.png)
+
+`grid-area`
+```css
+.item--5 {
+  background-color: royalblue;
+  /* grid-row: 1/2;
+  grid-column: 3/4; */
+  grid-area: 1/3/2/4;
+}
+
+```
+
+![image](images/8.png)
+
+# SPAN
+มีวิธี span 3 แบบ
+- ใช้เลข grid line
+- ใช้ span 
+- ใช้ เลบติดลบ
+```css
+.item--1 {
+  background-color: orangered;
+  grid-row: 2/3;
+  grid-column: 2/4;
+}
+
+```
+
+![image](images/9.png)
+
+grid ที่ล้นมาจะเรียกว่า `implicit grid`
+
+
+บางทีอาจจะเจอผลลัพธ์แปลกๆเช่น
+
+```css
+.item--3 {
+  background-color: blueviolet;
+  grid-column: 1/3;
+}
+
+```
+![image](images/10.png)
+
+เป็นเพราะ item 1,6,5 ล็อคที่ไว้แล้ว แล้ว 2 ต้องมาก่อน 3 
+พอคำนวณแล้ว 3 ไม่มีที่ลงเลยต้องขึ้น row ใหม่ (ต้องให้ไม่ fixed item 1 ก็ให้ผลลัพธ์ตามเดิม เพราะ 1,2 มาก่อน 3 )
+
+อีกแง่นึงคือเราพยายามจะวางซ้อนกัน มันเลยหาที่ใหม่
+
+แต่ถ้าล็อคแถวแบบนี้ด้วย (explicit) คือจะวางทับกันเลย (สังเกตว่า item 1 หายไป) สามารถปรับ z-index ให้ item-1 ขึ้นมาอยู่ด้านบนได้
+```css
+.item--3 {
+  background-color: blueviolet;
+  grid-column: 1/3;
+  grid-row: 2/3;
+}
+```
+![image](images/11.png)
+
+
+## การใช้ span 
+
+span : แทนจำนวน cell ที่ต้องการ ถ้าใส่เกินจะล้นจะ auto create new column or row
+```css
+.item--2 {
+  background-color: yellowgreen;
+  grid-column: 1/span 2;
+}
+
+```
+
+![image](images/12.png)
+
+```css
+.item--2 {
+  background-color: yellowgreen;
+  grid-column: 2/span 2;
+}
+
+```
+
+![image](images/13.png)
+
+ถ้่าจำไม่ได้ว่ามีกี่แถวหรือหลักกันแน่ให้ใช้ -1
+```css
+.item--2 {
+  background-color: yellowgreen;
+  grid-column: 2/-1;
+}
+```
+
+![image](images/14.png)
