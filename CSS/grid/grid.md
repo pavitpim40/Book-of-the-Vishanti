@@ -230,3 +230,72 @@ span : แทนจำนวน cell ที่ต้องการ ถ้าใ
 
 # WORKSHOP
 https://codepen.io/pavitpim/pen/BaYPWBG
+
+### ตั้งชื่อให้กับ grid line ได้
+
+- ตั้งได้หลายชื่อใน [name-1 name-2]
+- ใน repeat จะใช้เป็นชื่อ suffix เช่น [col-start] จะตั้งเป็น col-start 1
+```css 
+grid-template-rows: [header-start] 100px [header-end box-start] 200px [box-end main-start] 400px [main-end footer-start] 100px [footer-end];
+grid-template-columns: repeat(3, [col-start] 1fr [col-end]) 200px [col-grid-end];
+
+```
+
+## วิธีการใช้ grid-template-areas
+
+- ตั้งชื่อแต่ละ grid cell ได้เลย
+- หาก cell ไหนต้องการเว้นให้ใช้ `.`
+- cell อื่นจะถูกร่นขึ้นมา ดังนั้นอาจจะต้องตั้งชื่อให้ specific (เช่นในกรณี box-1 ถึง box-3)
+```css
+.container {
+  width :1000px;
+  margin : 30px auto;
+  
+  display : grid;
+  grid-template-rows: [header-start] 100px [header-end box-start] 200px [box-end main-start] 400px [main-end footer-start] 100px [footer-end];
+  grid-template-columns: repeat(3, [col-start] 1fr [col-end]) 200px [col-grid-end];
+  grid-gap: 30px;
+  
+  grid-template-areas: "head head head ."
+                      "box-1 box-2 box-3 side"
+                      "main main main side"
+                      "foot foot foot foot"
+}
+
+.item {
+    background-color : orangered;
+    padding: 20px;
+    color:white;
+    font-size:30px;
+    font-family:sans-serif;
+  }
+
+
+.header {
+ grid-area: head;
+}
+
+.sidebar {
+  grid-area:side;
+}
+.small-box-1 {
+  grid-area:box-1;
+}
+
+.small-box-2 {
+  grid-area: box-2
+}
+
+.small-box-3 {
+  grid-area: box-3;
+}
+.main {
+  grid-area: main;
+}
+
+.footer {
+  grid-area:foot;
+}
+
+
+```
