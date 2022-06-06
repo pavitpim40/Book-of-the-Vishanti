@@ -229,7 +229,8 @@ span : แทนจำนวน cell ที่ต้องการ ถ้าใ
 ![image](images/14.png)
 
 # WORKSHOP
-https://codepen.io/pavitpim/pen/BaYPWBG
+https://codepen.io/pavitpim/pen/BaYPWBG  
+![image](images/15.png)
 
 ### ตั้งชื่อให้กับ grid line ได้
 
@@ -299,3 +300,72 @@ grid-template-columns: repeat(3, [col-start] 1fr [col-end]) 200px [col-grid-end]
 
 
 ```
+
+# EXPLICIT & IMPLICIT
+
+- grid cell ที่เกินจาก grid-template จะเป็น explicit grid (สามารถสังเกตใน dev tool ได้)
+- implicit grid จะ fit ตาม content เว้นแต่ว่ากำหนด `grid-auto-rows`
+- implicit grid จะเพิ่มจำนวนแถว หรือ ไม่ก็กำหนด `grid-auto-flow : column` แทน (หากไม่กำหนดจะมี defualt ค่าคือ row)
+- หากกำหนด `grid-auto-flow : column` จะสามารถใช้ `grid-auto-columns` เพื่อกำหนดความกว้างของ implicit grid cell ได้
+
+```css
+ display:grid;
+  grid-template-rows: repeat(2,150px);
+  grid-template-columns: repeat(2,1fr);
+  grid-gap:30px;
+  
+  grid-auto-rows:80px;
+  
+  
+  grid-auto-flow: column;
+  grid-auto-columns: .5fr;
+
+```
+
+![image](images/16.png)
+https://codepen.io/pavitpim/pen/VwQBXKj?editors=1100
+
+# ALIGN & JUSTIFY CELL
+
+- justify จัดซ้ายขวา (แนว horizontal, row)
+- align จัดบนล่าง (แนว verticle, column)
+- ตำแหน่งจะอ้างอิง grid area ของ grid cell นั้นๆ  (ระวังผลลัพธ์แปลกๆของตัวที่มีการ span หรือ กินที่หลาย cell)
+```css
+//  ใช้กับ container // STRETCH/ center / start / end
+.container {
+align-items:center; 
+justify-items:center;
+}
+
+
+
+// ใช้กับ item // STRETCH/ center / start / end
+.item {
+align-self:start;  
+justify-self:start;
+}
+
+
+```
+
+![image](images/17.png)
+
+
+# ALIGN & JUSTIFY CONTENT
+
+- เราสามารถจัดตำแหน่ง content  ได้
+- โดยการจัดนี้จะเป็นการจัดตำแหน่งของ grid track (ทุก cell ในแนวนอน หรือแนวดิ่ง)
+
+```css
+  // Align grid tracks to grid container;  
+.container {
+  grid-template-rows: repeat(2,100px);
+  grid-template-columns: repeat(2,200px);
+  height : 1000px;
+  
+  justify-content: center;  // START / center / end / space-between / space-around / space-evenly;
+  align-content: center;
+}
+```
+จากรูปจะเห็นว่า grid track จะอยู่ตรงกลาง container (ไม่ชิดซ้ายบน ตามเดิม)
+![image](images/18.png)
