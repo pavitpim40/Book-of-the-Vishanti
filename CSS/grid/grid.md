@@ -369,3 +369,14 @@ justify-self:start;
 ```
 จากรูปจะเห็นว่า grid track จะอยู่ตรงกลาง container (ไม่ชิดซ้ายบน ตามเดิม)
 ![image](images/18.png)
+
+# dense 
+- `dense` ทำให้ grid ไม่มีช่องว่าง มักใช้เวลาจัดรูปภาพแล้ว เกิด implicit grid + hole
+
+# max-content min-content
+
+- The `max-content` sizing keyword represents the intrinsic `maximum width or height of the content`. For text content this means that the content `will not wrap at all even if it causes overflows`.
+- `max-content` ขยายตามขนาดทั้ง width,height ไม่ wrap ปล่อย overflow
+
+The `min-content` sizing keyword represents the intrinsic `minimum width` of the content. For text content this means that the content will take all `soft-wrapping` opportunities, becoming as `small as the longest word`.
+- `min-content` wrap โดยอิงจากคำที่ที่ยาวที่สุด แต่ถ้ามีคำเดียวยาวๆก็ overflow ได้เช่นกัน
