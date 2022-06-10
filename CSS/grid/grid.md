@@ -368,3 +368,31 @@ https://codepen.io/pavitpim/pen/VwQBXKj?editors=1100
 The `min-content` sizing keyword represents the intrinsic `minimum width` of the content. For text content this means that the content will take all `soft-wrapping` opportunities, becoming as `small as the longest word`.
 
 - `min-content` wrap โดยอิงจากคำที่ที่ยาวที่สุด แต่ถ้ามีคำเดียวยาวๆก็ overflow ได้เช่นกัน
+
+- `minmax(150px,50%)` กำหนดขนาดของ grid เป็นช่วง  
+
+# auto-fill, auto-fit
+
+`key-concept` : สามารถใช้ทำ responsive ได้โดยไม่ต้องเขียน media-query เลย
+
+  - `auto-fill` : เพิ่ม grid track ให้เต็มความกว้างโดยอัติโนมัติ ถึงแม้ track ที่เพิ่มมาจะไม่มี content
+  - `auto-fit` : เหมือนกับ auto-fill ต่างกันที่ track หากไม่มี content จะถูก wrap จนเหลือ 0px 
+  - ไม่ว่าจะใช้ตัวใด หากแถวแรกมีความกว้างเหลือ grid-cell ของแถวที่สองจะไปต่อท้ายทันที (ทำให้มี 1 แถวได้)
+
+use case 
+ - ใช้ `auto-fit` ร่วมกับ minmax
+ - หากความกว้างไม่พอกับค่า min จะขึ้นแถวใหม่ (ตัว min เป็นตัวกำหนดการ wrap)
+ - ใช้ `grid-auto-rows` ช่วยกำหนดความสูงของ implicit-grid
+
+```css
+.item {
+  width:90%;
+  
+  grid-template-rows: repeat(2, minmax(150px,min-content));
+  // grid-template-columns: repeat(auto-fill,100px);
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  
+  grid-auto-rows: 150px;
+}
+
+```
