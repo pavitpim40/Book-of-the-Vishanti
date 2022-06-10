@@ -375,7 +375,7 @@ The `min-content` sizing keyword represents the intrinsic `minimum width` of the
 
 `key-concept` : สามารถใช้ทำ responsive ได้โดยไม่ต้องเขียน media-query เลย
 
-  - `auto-fill` : เพิ่ม grid track ให้เต็มความกว้างโดยอัติโนมัติ ถึงแม้ track ที่เพิ่มมาจะไม่มี content
+  - `auto-fill` : เพิ่ม grid track ให้เต็มความกว้างโดยอัตโนมัติ ถึงแม้ track ที่เพิ่มมาจะไม่มี content
   - `auto-fit` : เหมือนกับ auto-fill ต่างกันที่ track หากไม่มี content จะถูก wrap จนเหลือ 0px 
   - ไม่ว่าจะใช้ตัวใด หากแถวแรกมีความกว้างเหลือ grid-cell ของแถวที่สองจะไปต่อท้ายทันที (ทำให้มี 1 แถวได้)
 
@@ -389,7 +389,6 @@ use case
   width:90%;
   
   grid-template-rows: repeat(2, minmax(150px,min-content));
-  // grid-template-columns: repeat(auto-fill,100px);
   grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
   
   grid-auto-rows: 150px;
