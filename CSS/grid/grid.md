@@ -1,5 +1,12 @@
 ref : https://codepen.io/pavitpim/pen/NWyBdPy?editors=1100
 
+# Table of Contents
+1. [Basic Grid](#basic-grid)
+2. [Repeat and Fractional unit](#repeat-and-fractional-unit)
+3. [Position](#position)
+4. [Auto-fit](#auto-fit)
+
+
 # Basic Grid
 
 ```html
@@ -56,7 +63,7 @@ ref : https://codepen.io/pavitpim/pen/NWyBdPy?editors=1100
 
 ![image](images/1.png)
 
-# repeat & fractional unit
+# repeat and fractional unit
 
 ```css
 grid-template-rows: repeat(2, 150px);
@@ -95,9 +102,10 @@ grid-template-columns: 50% 2fr 1fr;
 
 ![image](images/6.png)
 
-Note : หน่วย fr ใช้ได้ทั้ง row และ column
+Note : หน่วย fr ใช้ได้ทั้ง row และ column  
+<br>  
 
-# POSITIONING
+# Position
 
 - css rule ต่อไปนี้อ้างอิงจากตัวเลขที่ชื่อว่า `grid line`
 
@@ -142,7 +150,7 @@ shorthand
 
 - ใช้เลข grid line
 - ใช้ span
-- ใช้ เลบติดลบ
+- ใช้ เลขติดลบ
 
 ```css
 .item--1 {
@@ -217,7 +225,7 @@ span : แทนจำนวน cell ที่ต้องการ ถ้าใ
 
 ![image](images/14.png)
 
-# WORKSHOP
+## WORKSHOP
 
 https://codepen.io/pavitpim/pen/BaYPWBG  
 ![image](images/15.png)
@@ -292,7 +300,7 @@ grid-template-columns: repeat(3, [col-start] 1fr [col-end]) 200px [col-grid-end]
 }
 ```
 
-# EXPLICIT & IMPLICIT
+## EXPLICIT & IMPLICIT
 
 - grid cell ที่เกินจาก grid-template จะเป็น explicit grid (สามารถสังเกตใน dev tool ได้)
 - implicit grid จะ fit ตาม content เว้นแต่ว่ากำหนด `grid-auto-rows`
@@ -314,7 +322,7 @@ grid-auto-columns: 0.5fr;
 ![image](images/16.png)
 https://codepen.io/pavitpim/pen/VwQBXKj?editors=1100
 
-# ALIGN & JUSTIFY CELL
+## ALIGN & JUSTIFY CELL
 
 - justify จัดซ้ายขวา (แนว horizontal, row)
 - align จัดบนล่าง (แนว verticle, column)
@@ -336,7 +344,7 @@ https://codepen.io/pavitpim/pen/VwQBXKj?editors=1100
 
 ![image](images/17.png)
 
-# ALIGN & JUSTIFY CONTENT
+## ALIGN & JUSTIFY CONTENT
 
 - เราสามารถจัดตำแหน่ง content ได้
 - โดยการจัดนี้จะเป็นการจัดตำแหน่งของ grid track (ทุก cell ในแนวนอน หรือแนวดิ่ง)
@@ -356,11 +364,11 @@ https://codepen.io/pavitpim/pen/VwQBXKj?editors=1100
 จากรูปจะเห็นว่า grid track จะอยู่ตรงกลาง container (ไม่ชิดซ้ายบน ตามเดิม)
 ![image](images/18.png)
 
-# dense
+## dense
 
 - `dense` ทำให้ grid ไม่มีช่องว่าง มักใช้เวลาจัดรูปภาพแล้ว เกิด implicit grid + hole
 
-# max-content min-content
+## max-content min-content
 
 - The `max-content` sizing keyword represents the intrinsic `maximum width or height of the content`. For text content this means that the content `will not wrap at all even if it causes overflows`.
 - `max-content` ขยายตามขนาดทั้ง width,height ไม่ wrap ปล่อย overflow
@@ -371,8 +379,10 @@ The `min-content` sizing keyword represents the intrinsic `minimum width` of the
 
 - `minmax(150px,50%)` กำหนดขนาดของ grid เป็นช่วง  
 
-# auto-fill, auto-fit
 
+
+## auto-fill, auto-fit
+<a name="auto-fit"></a>
 `key-concept` : สามารถใช้ทำ responsive ได้โดยไม่ต้องเขียน media-query เลย
 
   - `auto-fill` : เพิ่ม grid track ให้เต็มความกว้างโดยอัตโนมัติ ถึงแม้ track ที่เพิ่มมาจะไม่มี content
